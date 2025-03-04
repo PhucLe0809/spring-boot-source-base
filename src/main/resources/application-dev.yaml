@@ -1,0 +1,58 @@
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: demo
+  datasource:
+    url: jdbc:mysql://localhost:3306/db_moneylover
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    database-platform: com.mysql.cj.jdbc.Driver
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQLDialect
+  security:
+    user:
+      name: username
+      password: 123456
+  liquibase:
+    change-log: classpath:liquibase/db.changelog-master.xml
+    enabled: true
+    database-change-log-table: DATABASECHANGELOG
+    database-change-log-lock-table: DATABASECHANGELOGLOCK
+  webflux:
+    static-path-pattern: "/static/**"
+
+server:
+  port: 8080
+  servlet:
+    context-path: /
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    oauth2-redirect-url: http://localhost:8080/swagger-ui/oauth2-redirect.html
+
+open:
+  api:
+    title: API Documentation
+    version: v1.1.0
+    description: API-Service
+    serverUrl: http://localhost:8080/
+    serverName: Server Test
+
+logging:
+  level:
+    org:
+      springframework: DEBUG
+
+jwt:
+  signerKey: "vDAJ8U1Ggknl0ZcKgDt6x7i8d1UGXUL+jhdE3TrYbaC+WnCbHrec8Sdx+rpqKgOi"
